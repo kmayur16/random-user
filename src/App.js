@@ -1,5 +1,5 @@
 import logo from './logo.svg';
-import './App.css';
+
 import RandomUser from './screens/random-user';
 
 function App() {

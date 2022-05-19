@@ -32,7 +32,42 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
+  }
+}
+
+.card {
+  border: 1px solid;
+  padding: 10px 0 10px 20px;
+  border-radius: 5px;
+  border-color: #dfdfdf;
+  flex-direction: row;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  margin: 20px auto;
+  margin-left: 60px;
+  width: 700px;
+  background-color: #f5f5f5;
+}
+
+.nationality {
+  width: 720px;
+  padding: 5px 5px 5px 5px;
+  color: #747474;
+
+}
+
+
+@media screen and (max-width: 800px) {
+  .card {
+    width: 500px;
+    flex-direction: column;
+  }
+
+  .nationality {
+    width: 500px;
   }
 }

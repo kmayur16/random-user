@@ -1,6 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
-
-
+import '../App.css'
 export default function RandomUser() {
 
     const [data, setData] = useState([]);
@@ -46,22 +45,7 @@ export default function RandomUser() {
                 {randomUser?.map(res =>
                 (
 
-                    <div style={{
-                        border: '1px solid',
-                        padding: '10px 0 10px 20px',
-                        borderRadius: '5px',
-                        borderColor: ' #dfdfdf',
-                        flexDirection: 'row',
-                        display: 'flex',
-                        alignContent: 'center',
-                        justifyContent: 'space-between',
-                        margin: '20px auto',
-                        marginLeft: '60px',
-                        width: '700px',
-                        backgroundColor: '#f5f5f5',
-                        // border: '1px solid blue',
-                        // boxSizing: 'border-box'
-                    }}>
+                    <div className="card">
 
                         <div style={{
                             display: 'flex',
@@ -95,12 +79,7 @@ export default function RandomUser() {
         return (
             <div>
                 <p style={{ fontWeight: 'bold', opacity: 0.8 }}>Select Nationality:</p>
-                <select id="nationality" style={{
-                    width: '720px',
-                    padding: '5px 5px 5px 5px',
-                    color: '#747474',
-
-                }}
+                <select className="nationality" id="nationality"
                     value={loc}
                     onChange={(e) => {
                         setLoc(e.target.value);
