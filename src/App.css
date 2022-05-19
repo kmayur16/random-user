@@ -63,11 +63,11 @@
 
 @media screen and (max-width: 800px) {
   .card {
-    width: 500px;
+    width: 400px;
     flex-direction: column;
   }
 
   .nationality {
-    width: 500px;
+    width: 420px;
   }
 }
