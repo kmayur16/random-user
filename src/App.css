@@ -1,43 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .card {
   border: 1px solid;
   padding: 10px 0 10px 20px;
@@ -53,6 +13,34 @@
   background-color: #f5f5f5;
 }
 
+.first {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.name {
+  align-self: center;
+  color: #8e838c;
+  width: 180px;
+}
+
+.email {
+  align-self: center;
+  align-items: stretch;
+  color: #868889;
+}
+
+.emaildiv {
+  display: flex;
+  padding-inline-end: 30px;
+}
+
+.nationdiv {
+  margin-left: 65px;
+}
+
 .nationality {
   width: 720px;
   padding: 5px 5px 5px 5px;
@@ -60,6 +48,12 @@
 
 }
 
+.genderdiv {
+  flex-direction: column;
+  display: flex;
+  margin-left: 60px;
+  margin-top: 10px;
+}
 
 @media screen and (max-width: 800px) {
   .card {
@@ -69,5 +63,69 @@
 
   .nationality {
     width: 420px;
+  }
+}
+
+@media screen and (min-width: 520px) and (max-width: 770px) {
+  .card {
+    width: 320px
+  }
+
+  .first {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .nationdiv {
+    margin-left: 64px;
+  }
+
+  .nationality {
+    width: 340px;
+  }
+
+  .name {
+    width: 300px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .card {
+    width: 320px;
+    flex-direction: column;
+    margin-left: 15px;
+  }
+
+  .first {
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .name {
+    width: 300px;
+    /* background-color: pink; */
+    font-size: 24px;
+  }
+
+  .emaildiv {
+    margin: 0;
+    padding: 0;
+    /* background-color: pink; */
+  }
+
+  .email {
+    font-size: 22px;
+  }
+
+  .nationdiv {
+    margin-left: 15px;
+  }
+
+  .nationality {
+    width: 340px;
+  }
+
+  .genderdiv {
+    margin-left: 10px;
   }
 }

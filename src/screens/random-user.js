@@ -1,5 +1,6 @@
 import React, { useState, useContext, createContext } from "react";
-import '../App.css'
+import '../App.css';
+import useWindowDimensions from "../Dimensions/window";
 export default function RandomUser() {
 
     const [data, setData] = useState([]);
@@ -7,6 +8,7 @@ export default function RandomUser() {
     const [gender, setGender] = useState('')
     const [loc, setLoc] = useState('');
     const RandomUserContext = createContext();
+    const { width, height } = useWindowDimensions()
 
     React.useEffect(() => {
         fetch(`https://randomuser.me/api/?results=100`)
@@ -37,7 +39,7 @@ export default function RandomUser() {
             setDispData(locData)
         }
     }, [loc]);
-
+    console.log("data", data, window.width, "width", width, "height", height);
     function DisplayCard() {
         const randomUser = useContext(RandomUserContext);
         return (
@@ -47,27 +49,15 @@ export default function RandomUser() {
 
                     <div className="card">
 
-                        <div style={{
-                            display: 'flex',
-                            flexDirection: 'row',
-                            // backgroundColor: 'red',
-                            justifyContent: 'space-between',
-                            width: '300px'
-                        }}>
+                        <div className="first">
                             <img style={{
                                 padding: '5px 0 5px 0',
-                                // margin: 0,
                                 borderRadius: '8px'
-                                // width: '80px'
-                            }} src={res.picture.medium}></img>
-                            <p style={{
-                                alignSelf: 'center',
-                                color: '#8e838c',
-                                width: '180px'
-                            }}>{res.name.title} {res.name.first} {res.name.last} ({res.nat})</p>
+                            }} src={window.innerWidth <= 620 ? res.picture.large : res.picture.medium}></img>
+                            <p className="name">{res.name.title} {res.name.first} {res.name.last} ({res.nat})</p>
                         </div>
-                        <div style={{ display: 'flex', paddingInlineEnd: '30px' }}>
-                            <p style={{ alignSelf: 'center', alignItems: 'stretch', color: '#868889' }}>Email: {res.email}</p>
+                        <div className="emaildiv">
+                            <p className="email">Email: {res.email}</p>
                         </div>
                     </div>
                 ))}
@@ -109,12 +99,7 @@ export default function RandomUser() {
 
     return (
         <div>
-            <div style={{
-                flexDirection: 'column',
-                display: 'flex',
-                marginLeft: '60px',
-                marginTop: '10px'
-            }} onChange={(e) => {
+            <div className="genderdiv" onChange={(e) => {
                 setGender(e.target.value);
             }}>
                 <div>
@@ -127,9 +112,7 @@ export default function RandomUser() {
                     <input type={'radio'} value='all' name="gender" defaultChecked /> All
                 </div>
             </div>
-            <div style={{
-                marginLeft: '65px',
-            }}>
+            <div className="nationdiv">
                 <NationalityDropdown />
             </div>
             <RandomUserContext.Provider value={dispData}>
