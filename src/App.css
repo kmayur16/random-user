@@ -67,6 +67,12 @@
 }
 
 @media screen and (min-width: 520px) and (max-width: 770px) {
+  .carddiv {
+    overflow-y: scroll;
+    margin-top: 10px;
+    height: 540px;
+  }
+
   .card {
     width: 320px
   }
@@ -90,10 +96,17 @@
 }
 
 @media screen and (max-width: 420px) {
+  .carddiv {
+    overflow-y: scroll;
+    margin-top: 10px;
+    height: 500px;
+  }
+
   .card {
     width: 320px;
     flex-direction: column;
     margin-left: 15px;
+
   }
 
   .first {

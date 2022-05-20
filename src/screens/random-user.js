@@ -43,7 +43,7 @@ export default function RandomUser() {
     function DisplayCard() {
         const randomUser = useContext(RandomUserContext);
         return (
-            <div>
+            <div className="carddiv">
                 {randomUser?.map(res =>
                 (
 
