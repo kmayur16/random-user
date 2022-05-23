@@ -1,6 +1,5 @@
 import React, { useState, useContext, createContext } from "react";
 import '../App.css';
-import useWindowDimensions from "../Dimensions/window";
 import NationalityDropdown from "./NationalityDropdown";
 import GenderSelection from "./GenderSelection";
 import DisplayCard from "./DisplayCard";
@@ -12,7 +11,6 @@ export default function RandomUser() {
     const [gender, setGender] = useState('')
     const [loc, setLoc] = useState('');
     const RandomUserContext = createContext();
-    const { width, height } = useWindowDimensions()
 
     React.useEffect(() => {
         fetch(`https://randomuser.me/api/?results=100`)
