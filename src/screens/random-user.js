@@ -1,6 +1,10 @@
 import React, { useState, useContext, createContext } from "react";
 import '../App.css';
 import useWindowDimensions from "../Dimensions/window";
+import NationalityDropdown from "./NationalityDropdown";
+import GenderSelection from "./GenderSelection";
+import DisplayCard from "./DisplayCard";
+
 export default function RandomUser() {
 
     const [data, setData] = useState([]);
@@ -39,84 +43,22 @@ export default function RandomUser() {
             setDispData(locData)
         }
     }, [loc]);
-    console.log("data", data, window.width, "width", width, "height", height);
-    function DisplayCard() {
+
+    function DisplayCards() {
         const randomUser = useContext(RandomUserContext);
         return (
-            <div className="carddiv">
-                {randomUser?.map(res =>
-                (
-
-                    <div className="card">
-
-                        <div className="first">
-                            <img style={{
-                                padding: '5px 0 5px 0',
-                                borderRadius: '8px'
-                            }} src={window.innerWidth <= 620 ? res.picture.large : res.picture.medium}></img>
-                            <p className="name">{res.name.title} {res.name.first} {res.name.last} ({res.nat})</p>
-                        </div>
-                        <div className="emaildiv">
-                            <p className="email">Email: {res.email}</p>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        )
-    }
-
-    function NationalityDropdown() {
-        return (
-            <div>
-                <p style={{ fontWeight: 'bold', opacity: 0.8 }}>Select Nationality:</p>
-                <select className="nationality" id="nationality"
-                    value={loc}
-                    onChange={(e) => {
-                        setLoc(e.target.value);
-                    }}
-                >
-                    <option>AU</option>
-                    <option>BR</option>
-                    <option>CA</option>
-                    <option>CH</option>
-                    <option>DE</option>
-                    <option>DK</option>
-                    <option>ES</option>
-                    <option>FI</option>
-                    <option>FR</option>
-                    <option>GB</option>
-                    <option>IR</option>
-                    <option>IE</option>
-                    <option>NO</option>
-                    <option>NL</option>
-                    <option>NZ</option>
-                    <option>TR</option>
-                    <option>US</option>
-                </select>
-            </div>
+            <DisplayCard randomUser={randomUser} />
         )
     }
 
     return (
         <div>
-            <div className="genderdiv" onChange={(e) => {
-                setGender(e.target.value);
-            }}>
-                <div>
-                    <input type={'radio'} style={{ color: '#747474' }} value='male' name="gender" /> Male
-                </div>
-                <div>
-                    <input type={'radio'} style={{ color: '#747474' }} color='#747474' value='female' name="gender" /> Female
-                </div>
-                <div>
-                    <input type={'radio'} value='all' name="gender" defaultChecked /> All
-                </div>
-            </div>
+            <GenderSelection onChange={(e) => setGender(e.target.value)} />
             <div className="nationdiv">
-                <NationalityDropdown />
+                <NationalityDropdown onChange={(e) => setLoc(e.target.value)} value={loc} />
             </div>
             <RandomUserContext.Provider value={dispData}>
-                <DisplayCard randomUser={dispData} />
+                <DisplayCards randomUser={dispData} />
             </RandomUserContext.Provider>
         </div>
     )
